@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,261 +11,553 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;700;800&display=swap" rel="stylesheet">
   <style>
-/* Colorway: violet, white, black */
-:root {
-  --violet: #050000;
-  --white: #ffffff;
-  --black: #000000;
-  --bg: var(--white);
-  --ink: var(--black);
-  --mute: #6b6b6b;
-  --hair: #d9d9d9;
-  --rule: var(--black);
-  --accent: var(--violet);
-}
-body.dark-mode {
-  --bg: var(--black);
-  --ink: var(--white);
-  --mute: #a3a3a3;
-  --hair: #2e2e2e;
-  --rule: var(--white);
-  --accent: #a67cff; /* lighter violet for contrast on black */
-}
+    :root {
+      --violet: #050000;
+      --white: #ffffff;
+      --black: #000000;
+      --bg: var(--white);
+      --ink: var(--black);
+      --mute: #6b6b6b;
+      --hair: #d9d9d9;
+      --rule: var(--black);
+      --accent: var(--violet);
+    }
 
-body {
-  background: var(--bg);
-  color: var(--ink);
-  font-family: "Inter Tight", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 1rem;
-  line-height: 1.45;
-  -webkit-font-smoothing: antialiased;
-}
-a { color: inherit; text-decoration: none; }
-a:hover { text-decoration: underline; text-underline-offset: 3px; }
-:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
-.container { max-width: 1200px; }
+    body.dark-mode {
+      --bg: var(--black);
+      --ink: var(--white);
+      --mute: #a3a3a3;
+      --hair: #2e2e2e;
+      --rule: var(--white);
+      --accent: #a67cff;
+      /* lighter violet for contrast on black */
+    }
 
-/* HEADER: one solid violet field, the single bold move */
-.site-header {
-  background: var(--violet);
-  color: var(--white);
-  padding: 104px 0 48px;
-}
-.logo { height: 40px; filter: brightness(0) invert(1); }
-.hero-row { margin-top: 32px; }
-.stamp { font-weight: 500; margin: 0 0 24px; }
-.name-heading {
-  font-weight: 800;
-  letter-spacing: -0.045em;
-  line-height: 0.88;
-  font-size: clamp(56px, 10.5vw, 148px);
-  margin: 0;
-}
-.profile-img {
-  width: 100%;
-  aspect-ratio: 1 / 1;
-  object-fit: cover;
-  display: block;
-}
-.hero-meta {
-  margin-top: 48px;
-  padding-top: 16px;
-  border-top: 3px solid var(--white);
-}
-.hero-meta a { color: var(--white); }
-.lead-text { font-size: 1.25rem; font-weight: 500; letter-spacing: -0.01em; max-width: 34em; }
-.skills { font-weight: 500; }
-.btn-outline-light { border-radius: 0; }
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: "Inter Tight", "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 1rem;
+      line-height: 1.45;
+      -webkit-font-smoothing: antialiased;
+    }
 
-/* SECTIONS: label column left, content right, thick rule on top */
-.block {
-  border-top: 3px solid var(--rule);
-  padding: 20px 0 56px;
-  margin: 56px 0 0;
-}
-.block-title { font-size: 1.5rem; font-weight: 800; letter-spacing: -0.03em; margin: 0; }
-.sub { font-size: 1rem; font-weight: 700; margin: 0 0 8px; color: var(--accent); }
-.plain { list-style: none; padding: 0; }
-.plain li { padding: 2px 0; }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
 
-.entry { border-top: 1px solid var(--hair); padding: 16px 0; margin: 0; }
-.entry:first-child { border-top: 0; padding-top: 0; }
-.meta { color: var(--mute); }
+    a:hover {
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
 
-/* PROJECTS */
-.project-img {
-  width: 100%;
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
-  object-position: top;
-  display: block;
-  filter: grayscale(1);
-  transition: filter 0.2s;
-}
-.project-img.wide { aspect-ratio: 21 / 9; }
-.project:hover .project-img { filter: none; }
-.project-title { font-size: 2rem; font-weight: 800; letter-spacing: -0.03em; line-height: 1.05; margin: 0 0 8px; }
-.project-title.sm { font-size: 1.35rem; }
+    :focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 2px;
+    }
 
-/* GLASS: iOS-style frosted layer, used only on the nav and image labels */
-html { scroll-behavior: smooth; }
-.block { scroll-margin-top: 88px; }
-.glass {
-  background: rgba(24, 12, 48, 0.38);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
-  backdrop-filter: blur(20px) saturate(180%);
-  border: 1px solid rgba(255, 255, 255, 0.28);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35), 0 8px 32px rgba(0, 0, 0, 0.18);
-  color: var(--white);
-}
-@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
-  .glass { background: rgba(24, 12, 48, 0.88); }
-}
-@media (prefers-reduced-transparency: reduce) {
-  .glass { background: rgba(24, 12, 48, 0.94); -webkit-backdrop-filter: none; backdrop-filter: none; }
-}
-.glass-nav-wrap {
-  position: fixed;
-  top: calc(12px + env(safe-area-inset-top, 0px));
-  left: 0;
-  right: 0;
-  z-index: 100;
-}
-.glass-nav { border-radius: 999px; padding: 8px 12px 8px 22px; }
-.glass-nav .logo { height: 28px; display: block; }
-.nav-links a { color: var(--white); font-weight: 500; font-size: 0.95rem; }
-.glass-nav .btn {
-  border-radius: 999px;
-  border-color: rgba(255, 255, 255, 0.45);
-  background: rgba(255, 255, 255, 0.12);
-  padding: 6px 16px;
-}
-.glass-nav .btn:hover { background: rgba(255, 255, 255, 0.28); color: var(--white); }
-/* Theme toggle: icon only */
-.glass-nav .theme-btn { width: 32px; padding: 0; justify-content: center; }
-.theme-btn svg { display: block; }
-.icon-sun { display: none !important; }
-body.dark-mode .icon-sun { display: block !important; }
-body.dark-mode .icon-moon { display: none !important; }
+    .container {
+      max-width: 1200px;
+    }
 
-/* Burger menu (phones only) */
-.burger { display: none; }
-.mobile-menu { display: none; }
-@media (max-width: 767px) {
-  .burger {
-    display: block;
-    position: relative;
-    flex: none;
-    width: 40px;
-    height: 40px;
-    padding: 0;
-    border-radius: 50%;
-    border: 1px solid rgba(255, 255, 255, 0.45);
-    background: rgba(255, 255, 255, 0.12);
-    cursor: pointer;
-  }
-  .burger span {
-    position: absolute;
-    left: 11px;
-    right: 11px;
-    height: 2px;
-    border-radius: 2px;
-    background: var(--white);
-    transition: top 0.2s, transform 0.2s, opacity 0.2s;
-  }
-  .burger span:nth-child(1) { top: 14px; }
-  .burger span:nth-child(2) { top: 19px; }
-  .burger span:nth-child(3) { top: 24px; }
-  .burger[aria-expanded="true"] span:nth-child(1) { top: 19px; transform: rotate(45deg); }
-  .burger[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
-  .burger[aria-expanded="true"] span:nth-child(3) { top: 19px; transform: rotate(-45deg); }
-  .mobile-menu {
-    display: block;
-    margin-top: 8px;
-    padding: 6px 22px;
-    border-radius: 28px;
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(-8px);
-    transition: opacity 0.2s, transform 0.2s, visibility 0.2s;
-  }
-  .mobile-menu.open { opacity: 1; visibility: visible; transform: none; }
-  .mobile-menu a {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    padding: 14px 0;
-    color: var(--white);
-    font-size: 1.25rem;
-    font-weight: 700;
-    letter-spacing: -0.02em;
-  }
-  .mobile-menu a + a { border-top: 1px solid rgba(255, 255, 255, 0.2); }
-  .mobile-menu a.sub { border-top: 0; margin-top: -8px; padding: 0 0 14px 2px; font-size: 1rem; font-weight: 500; letter-spacing: 0; }
-  .mobile-menu small { font-size: 0.875rem; font-weight: 400; opacity: 0.7; letter-spacing: 0; }
-}
+    /* HEADER: one solid violet field, the single bold move */
+    .site-header {
+      background: var(--violet);
+      color: var(--white);
+      padding: 104px 0 48px;
+    }
 
-/* Projects submenu: the nav itself grows to hold "– WebDev" directly under "Projects" */
-.glass-nav { align-items: flex-start; border-radius: 26px; }
-.glass-nav > a, .nav-right, .nav-links { align-items: flex-start; }
-.glass-nav > a { display: flex; height: 32px; align-items: center; }
-.nav-right > .btn, .nav-right > .burger { align-self: flex-start; }
-.glass-nav .btn { height: 32px; display: flex; align-items: center; }
-.nav-links > a, .nav-item > a { display: flex; align-items: center; height: 32px; line-height: 1; }
-.submenu {
-  max-height: 0;
-  opacity: 0;
-  overflow: hidden;
-  transition: max-height 0.2s, opacity 0.2s;
-}
-.submenu a { display: block; padding-bottom: 6px; color: var(--white); font-size: 0.95rem; font-weight: 500; white-space: nowrap; }
-.submenu a:hover { text-decoration: underline; text-underline-offset: 4px; }
-.nav-item:hover .submenu,
-.nav-item:focus-within .submenu { max-height: 32px; opacity: 1; }
-@media (max-width: 767px) {
-  .glass-nav, .nav-right { align-items: center; }
-  .glass-nav { border-radius: 999px; }
-  .nav-right > .btn, .nav-right > .burger { align-self: center; }
-}
+    .logo {
+      height: 40px;
+      filter: brightness(0) invert(1);
+    }
 
-.glass-wrap { position: relative; }
-.glass-chip {
-  position: absolute;
-  left: 12px;
-  bottom: 12px;
-  border-radius: 999px;
-  padding: 5px 14px;
-  font-size: 0.875rem;
-  font-weight: 500;
-}
+    .hero-row {
+      margin-top: 32px;
+    }
 
-/* Name warp: only the letters near the pointer bend; hitbox is the text itself */
-.name-heading { position: relative; pointer-events: none; }
-.name-heading .word { display: inline-block; white-space: nowrap; pointer-events: auto; }
-.name-heading .ch { display: inline-block; transform-origin: 50% 85%; will-change: transform; }
+    .stamp {
+      font-weight: 500;
+      margin: 0 0 24px;
+    }
 
-/* FOOTER */
-.site-footer {
-  background: var(--black);
-  color: var(--white);
-  padding: 20px 0 calc(20px + env(safe-area-inset-bottom, 0px));
-  margin-top: 24px;
-}
-body.dark-mode .site-footer { border-top: 3px solid var(--violet); }
+    .name-heading {
+      font-weight: 800;
+      letter-spacing: -0.045em;
+      line-height: 0.88;
+      font-size: clamp(56px, 10.5vw, 148px);
+      margin: 0;
+    }
 
-@media (max-width: 767px) {
-  .hero-row { margin-top: 24px; }
-  .profile-img { max-width: 260px; }
-  .project-img.wide { aspect-ratio: 4 / 3; }
-  .project-title { font-size: 1.5rem; }
-}
-@media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
-  .submenu, .mobile-menu, .burger span { transition: none; }
-  .project-img { transition: none; }
-}
+    .profile-img {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      display: block;
+    }
+
+    .hero-meta {
+      margin-top: 48px;
+      padding-top: 16px;
+      border-top: 3px solid var(--white);
+    }
+
+    .hero-meta a {
+      color: var(--white);
+    }
+
+    .lead-text {
+      font-size: 1.25rem;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      max-width: 34em;
+    }
+
+    .skills {
+      font-weight: 500;
+    }
+
+    .btn-outline-light {
+      border-radius: 0;
+    }
+
+   
+    .block {
+      border-top: 3px solid var(--rule);
+      padding: 20px 0 56px;
+      margin: 56px 0 0;
+    }
+
+    .block-title {
+      font-size: 1.5rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin: 0;
+    }
+
+    .sub {
+      font-size: 1rem;
+      font-weight: 700;
+      margin: 0 0 8px;
+      color: var(--accent);
+    }
+
+    .plain {
+      list-style: none;
+      padding: 0;
+    }
+
+    .plain li {
+      padding: 2px 0;
+    }
+
+    .entry {
+      border-top: 1px solid var(--hair);
+      padding: 16px 0;
+      margin: 0;
+    }
+
+    .entry:first-child {
+      border-top: 0;
+      padding-top: 0;
+    }
+
+    .meta {
+      color: var(--mute);
+    }
+
+    /* PROJECTS */
+    .project-img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      object-position: top;
+      display: block;
+      filter: grayscale(1);
+      transition: filter 0.2s;
+    }
+
+    .project-img.wide {
+      aspect-ratio: 21 / 9;
+    }
+
+    .project:hover .project-img {
+      filter: none;
+    }
+
+    .project-title {
+      font-size: 2rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.05;
+      margin: 0 0 8px;
+    }
+
+    .project-title.sm {
+      font-size: 1.35rem;
+    }
+
+    /* GLASS: iOS-style frosted layer, used only on the nav and image labels */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    .block {
+      scroll-margin-top: 88px;
+    }
+
+    .glass {
+      background: rgba(24, 12, 48, 0.38);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      backdrop-filter: blur(20px) saturate(180%);
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35), 0 8px 32px rgba(0, 0, 0, 0.18);
+      color: var(--white);
+    }
+
+    @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+      .glass {
+        background: rgba(24, 12, 48, 0.88);
+      }
+    }
+
+    @media (prefers-reduced-transparency: reduce) {
+      .glass {
+        background: rgba(24, 12, 48, 0.94);
+        -webkit-backdrop-filter: none;
+        backdrop-filter: none;
+      }
+    }
+
+    .glass-nav-wrap {
+      position: fixed;
+      top: calc(12px + env(safe-area-inset-top, 0px));
+      left: 0;
+      right: 0;
+      z-index: 100;
+    }
+
+    .glass-nav {
+      border-radius: 999px;
+      padding: 8px 12px 8px 22px;
+    }
+
+    .glass-nav .logo {
+      height: 28px;
+      display: block;
+    }
+
+    .nav-links a {
+      color: var(--white);
+      font-weight: 500;
+      font-size: 0.95rem;
+    }
+
+    .glass-nav .btn {
+      border-radius: 999px;
+      border-color: rgba(255, 255, 255, 0.45);
+      background: rgba(255, 255, 255, 0.12);
+      padding: 6px 16px;
+    }
+
+    .glass-nav .btn:hover {
+      background: rgba(255, 255, 255, 0.28);
+      color: var(--white);
+    }
+
+    /* Theme toggle: icon only */
+    .glass-nav .theme-btn {
+      width: 32px;
+      padding: 0;
+      justify-content: center;
+    }
+
+    .theme-btn svg {
+      display: block;
+    }
+
+    .icon-sun {
+      display: none !important;
+    }
+
+    body.dark-mode .icon-sun {
+      display: block !important;
+    }
+
+    body.dark-mode .icon-moon {
+      display: none !important;
+    }
+
+    /* Burger menu (phones only) */
+    .burger {
+      display: none;
+    }
+
+    .mobile-menu {
+      display: none;
+    }
+
+    @media (max-width: 767px) {
+      .burger {
+        display: block;
+        position: relative;
+        flex: none;
+        width: 40px;
+        height: 40px;
+        padding: 0;
+        border-radius: 50%;
+        border: 1px solid rgba(255, 255, 255, 0.45);
+        background: rgba(255, 255, 255, 0.12);
+        cursor: pointer;
+      }
+
+      .burger span {
+        position: absolute;
+        left: 11px;
+        right: 11px;
+        height: 2px;
+        border-radius: 2px;
+        background: var(--white);
+        transition: top 0.2s, transform 0.2s, opacity 0.2s;
+      }
+
+      .burger span:nth-child(1) {
+        top: 14px;
+      }
+
+      .burger span:nth-child(2) {
+        top: 19px;
+      }
+
+      .burger span:nth-child(3) {
+        top: 24px;
+      }
+
+      .burger[aria-expanded="true"] span:nth-child(1) {
+        top: 19px;
+        transform: rotate(45deg);
+      }
+
+      .burger[aria-expanded="true"] span:nth-child(2) {
+        opacity: 0;
+      }
+
+      .burger[aria-expanded="true"] span:nth-child(3) {
+        top: 19px;
+        transform: rotate(-45deg);
+      }
+
+      .mobile-menu {
+        display: block;
+        margin-top: 8px;
+        padding: 6px 22px;
+        border-radius: 28px;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-8px);
+        transition: opacity 0.2s, transform 0.2s, visibility 0.2s;
+      }
+
+      .mobile-menu.open {
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+      }
+
+      .mobile-menu a {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        padding: 14px 0;
+        color: var(--white);
+        font-size: 1.25rem;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+      }
+
+      .mobile-menu a+a {
+        border-top: 1px solid rgba(255, 255, 255, 0.2);
+      }
+
+      .mobile-menu a.sub {
+        border-top: 0;
+        margin-top: -8px;
+        padding: 0 0 14px 2px;
+        font-size: 1rem;
+        font-weight: 500;
+        letter-spacing: 0;
+      }
+
+      .mobile-menu small {
+        font-size: 0.875rem;
+        font-weight: 400;
+        opacity: 0.7;
+        letter-spacing: 0;
+      }
+    }
+
+    /* Projects submenu: the nav itself grows to hold "– WebDev" directly under "Projects" */
+    .glass-nav {
+      align-items: flex-start;
+      border-radius: 26px;
+    }
+
+    .glass-nav>a,
+    .nav-right,
+    .nav-links {
+      align-items: flex-start;
+    }
+
+    .glass-nav>a {
+      display: flex;
+      height: 32px;
+      align-items: center;
+    }
+
+    .nav-right>.btn,
+    .nav-right>.burger {
+      align-self: flex-start;
+    }
+
+    .glass-nav .btn {
+      height: 32px;
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-links>a,
+    .nav-item>a {
+      display: flex;
+      align-items: center;
+      height: 32px;
+      line-height: 1;
+    }
+
+    .submenu {
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+      transition: max-height 0.2s, opacity 0.2s;
+    }
+
+    .submenu a {
+      display: block;
+      padding-bottom: 6px;
+      color: var(--white);
+      font-size: 0.95rem;
+      font-weight: 500;
+      white-space: nowrap;
+    }
+
+    .submenu a:hover {
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+
+    .nav-item:hover .submenu,
+    .nav-item:focus-within .submenu {
+      max-height: 200px;
+      opacity: 1;
+    }
+
+    @media (max-width: 767px) {
+
+      .glass-nav,
+      .nav-right {
+        align-items: center;
+      }
+
+      .glass-nav {
+        border-radius: 999px;
+      }
+
+      .nav-right>.btn,
+      .nav-right>.burger {
+        align-self: center;
+      }
+    }
+
+    .glass-wrap {
+      position: relative;
+    }
+
+    .glass-chip {
+      position: absolute;
+      left: 12px;
+      bottom: 12px;
+      border-radius: 999px;
+      padding: 5px 14px;
+      font-size: 0.875rem;
+      font-weight: 500;
+    }
+
+    /* Name warp: only the letters near the pointer bend; hitbox is the text itself */
+    .name-heading {
+      position: relative;
+      pointer-events: none;
+    }
+
+    .name-heading .word {
+      display: inline-block;
+      white-space: nowrap;
+      pointer-events: auto;
+    }
+
+    .name-heading .ch {
+      display: inline-block;
+      transform-origin: 50% 85%;
+      will-change: transform;
+    }
+
+    /* FOOTER */
+    .site-footer {
+      background: var(--black);
+      color: var(--white);
+      padding: 20px 0 calc(20px + env(safe-area-inset-bottom, 0px));
+      margin-top: 24px;
+    }
+
+    body.dark-mode .site-footer {
+      border-top: 3px solid var(--violet);
+    }
+
+    @media (max-width: 767px) {
+      .hero-row {
+        margin-top: 24px;
+      }
+
+      .profile-img {
+        max-width: 260px;
+      }
+
+      .project-img.wide {
+        aspect-ratio: 4 / 3;
+      }
+
+      .project-title {
+        font-size: 1.5rem;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      .submenu,
+      .mobile-menu,
+      .burger span {
+        transition: none;
+      }
+
+      .project-img {
+        transition: none;
+      }
+    }
   </style>
 </head>
+
 <body id="top">
 
   <!-- GLASS NAV -->
@@ -279,17 +572,30 @@ body.dark-mode .site-footer { border-top: 3px solid var(--violet); }
             <a href="#education">Education</a>
             <a href="#projects">Projects</a>
             <div class="nav-item">
-              <a href="https://github.com/jderAtenciana/WebD3v" target="_blank" rel="noopener">WEBDEV</a>
+              <a href="https://github.com/jderAtenciana/WebD3v/index.html" target="_blank" rel="noopener">WEBDEV</a>
               <div class="submenu">
-                <a href="https://jderatenciana.github.io/WebD3v/ACT01/Bento.html" target="_blank" rel="noopener">Bento</a>
+                <a href="https://jderatenciana.github.io/WebD3v/ACT01/Bento.html" target="_blank"
+                  rel="noopener">Bento</a>
+                <a href="https://jderatenciana.github.io/WebD3v/ACT02/index.html" target="_blank"
+                  rel="noopener">Json</a>
               </div>
             </div>
           </div>
-          <button id="themeBtn" type="button" class="btn btn-outline-light btn-sm theme-btn" aria-label="Switch to dark mode">
-            <svg class="icon-moon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
-            <svg class="icon-sun" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+          <button id="themeBtn" type="button" class="btn btn-outline-light btn-sm theme-btn"
+            aria-label="Switch to dark mode">
+            <svg class="icon-moon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor"
+              stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" />
+            </svg>
+            <svg class="icon-sun" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor"
+              stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="4" />
+              <path
+                d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" />
+            </svg>
           </button>
-          <button id="burger" type="button" class="burger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+          <button id="burger" type="button" class="burger" aria-label="Open menu" aria-expanded="false"
+            aria-controls="mobileMenu">
             <span></span><span></span><span></span>
           </button>
         </div>
@@ -300,6 +606,10 @@ body.dark-mode .site-footer { border-top: 3px solid var(--violet); }
         <a href="#education">Education</a>
         <a href="#projects">Projects</a>
         <a class="sub" href="https://github.com/jderAtenciana/WebD3v" target="_blank" rel="noopener">– WebDev</a>
+        <a class="sub" href="https://jderatenciana.github.io/WebD3v/ACT01/Bento.html" target="_blank" rel="noopener">–
+          Bento</a>
+        <a class="sub" href="https://jderatenciana.github.io/WebD3v/ACT02/index.html" target="_blank" rel="noopener">–
+          Json</a>
       </div>
     </div>
   </div>
@@ -339,12 +649,15 @@ body.dark-mode .site-footer { border-top: 3px solid var(--violet); }
 
     <!-- About -->
     <section class="block row g-4" id="about">
-      <div class="col-md-3"><h2 class="block-title">About</h2></div>
+      <div class="col-md-3">
+        <h2 class="block-title">About</h2>
+      </div>
       <div class="col-md-9">
         <div class="row g-4">
           <div class="col-md-6">
             <h3 class="sub">Description</h3>
-            <p>I enjoy creating clean, useful project layouts with a creative touch. My focus: make the work understandable, organized, and usable.</p>
+            <p>I enjoy creating clean, useful project layouts with a creative touch. My focus: make the work
+              understandable, organized, and usable.</p>
             <h3 class="sub mt-4">Languages</h3>
             <p class="mb-0">Filipino / English</p>
           </div>
@@ -363,26 +676,36 @@ body.dark-mode .site-footer { border-top: 3px solid var(--violet); }
 
     <!-- Experience -->
     <section class="block row g-4" id="experience">
-      <div class="col-md-3"><h2 class="block-title">Experience</h2></div>
+      <div class="col-md-3">
+        <h2 class="block-title">Experience</h2>
+      </div>
       <div class="col-md-9">
         <div class="entry row g-3">
           <div class="col-md-3 meta">2025 – 2026</div>
-          <div class="col-md-9"><strong>Mobile App Designer – PUP</strong><p class="mb-0">Mobile app design and implementation.</p></div>
+          <div class="col-md-9"><strong>Mobile App Designer – PUP</strong>
+            <p class="mb-0">Mobile app design and implementation.</p>
+          </div>
         </div>
         <div class="entry row g-3">
           <div class="col-md-3 meta">2025 – 2026</div>
-          <div class="col-md-9"><strong>System Developer – PUP</strong><p class="mb-0">Created a system and handled basic system coding.</p></div>
+          <div class="col-md-9"><strong>System Developer – PUP</strong>
+            <p class="mb-0">Created a system and handled basic system coding.</p>
+          </div>
         </div>
         <div class="entry row g-3">
           <div class="col-md-3 meta">2023 – 2024</div>
-          <div class="col-md-9"><strong>OJT Trainee – Galaxy Corp, Santo Tomas</strong><p class="mb-0">Assigned to the admin room and assisted with paperwork.</p></div>
+          <div class="col-md-9"><strong>OJT Trainee – Galaxy Corp, Santo Tomas</strong>
+            <p class="mb-0">Assigned to the admin room and assisted with paperwork.</p>
+          </div>
         </div>
       </div>
     </section>
 
     <!-- Education -->
     <section class="block row g-4" id="education">
-      <div class="col-md-3"><h2 class="block-title">Education</h2></div>
+      <div class="col-md-3">
+        <h2 class="block-title">Education</h2>
+      </div>
       <div class="col-md-9">
         <div class="entry row g-3">
           <div class="col-md-6"><strong>Bachelor of Information Technology</strong></div>
@@ -401,7 +724,9 @@ body.dark-mode .site-footer { border-top: 3px solid var(--violet); }
 
     <!-- Highlights -->
     <section class="block row g-4">
-      <div class="col-md-3"><h2 class="block-title">Highlights</h2></div>
+      <div class="col-md-3">
+        <h2 class="block-title">Highlights</h2>
+      </div>
       <div class="col-md-9">
         <div class="entry row g-3">
           <div class="col-md-4"><strong>Best skill mix</strong></div>
@@ -409,11 +734,13 @@ body.dark-mode .site-footer { border-top: 3px solid var(--violet); }
         </div>
         <div class="entry row g-3">
           <div class="col-md-4"><strong>What I can contribute</strong></div>
-          <div class="col-md-8">Organized layouts, practical project systems, and steady improvement from one build to the next.</div>
+          <div class="col-md-8">Organized layouts, practical project systems, and steady improvement from one build to
+            the next.</div>
         </div>
         <div class="entry row g-3">
           <div class="col-md-4"><strong>Current direction</strong></div>
-          <div class="col-md-8">Growing as an IT student with stronger frontend, app design, and system development skills.</div>
+          <div class="col-md-8">Growing as an IT student with stronger frontend, app design, and system development
+            skills.</div>
         </div>
       </div>
     </section>
@@ -425,12 +752,14 @@ body.dark-mode .site-footer { border-top: 3px solid var(--violet); }
       <div class="row g-4 mb-5">
         <div class="col-12">
           <article class="project">
-            <div class="glass-wrap"><img src="img/ichess.png" alt="iChess System" class="project-img wide"><span class="glass glass-chip">Web System</span></div>
+            <div class="glass-wrap"><img src="img/ichess.png" alt="iChess System" class="project-img wide"><span
+                class="glass glass-chip">Web System</span></div>
             <div class="row g-3 mt-1">
               <div class="col-md-3 meta">2025 – 2026</div>
               <div class="col-md-9">
                 <h3 class="project-title">iChess – Learn About Chess and Merchandise</h3>
-                <p class="mb-0">A locally hosted chess platform. Designed and developed the full login and registration with e-commerce flow as a PUP system project.</p>
+                <p class="mb-0">A locally hosted chess platform. Designed and developed the full login and registration
+                  with e-commerce flow as a PUP system project.</p>
               </div>
             </div>
           </article>
@@ -440,26 +769,32 @@ body.dark-mode .site-footer { border-top: 3px solid var(--violet); }
       <div class="row g-4">
         <div class="col-md-4">
           <article class="project">
-            <div class="glass-wrap"><img src="img/alien.jpg" alt="Space Invaders Game" class="project-img"><span class="glass glass-chip">Game Dev</span></div>
+            <div class="glass-wrap"><img src="img/alien.jpg" alt="Space Invaders Game" class="project-img"><span
+                class="glass glass-chip">Game Dev</span></div>
             <p class="meta mt-3 mb-1">2025 – 2026</p>
             <h3 class="project-title sm">Space Invaders Clone</h3>
-            <p class="mb-0">A custom shooter with wave-based enemies and real-time scoring, built during system development at PUP.</p>
+            <p class="mb-0">A custom shooter with wave-based enemies and real-time scoring, built during system
+              development at PUP.</p>
           </article>
         </div>
         <div class="col-md-4">
           <article class="project">
-            <div class="glass-wrap"><img src="img/pixel.jpg" alt="Pixel Defense Game" class="project-img"><span class="glass glass-chip">Game Design</span></div>
+            <div class="glass-wrap"><img src="img/pixel.jpg" alt="Pixel Defense Game" class="project-img"><span
+                class="glass glass-chip">Game Design</span></div>
             <p class="meta mt-3 mb-1">2025 – 2026</p>
             <h3 class="project-title sm">Pixel Defense</h3>
-            <p class="mb-0">Title screen art and concept for a pixel-art tower defense game developed as coursework at PUP.</p>
+            <p class="mb-0">Title screen art and concept for a pixel-art tower defense game developed as coursework at
+              PUP.</p>
           </article>
         </div>
         <div class="col-md-4">
           <article class="project">
-            <div class="glass-wrap"><img src="img/pp.jpg" alt="Pixel Defense Team" class="project-img"><span class="glass glass-chip">Teamwork</span></div>
+            <div class="glass-wrap"><img src="img/pp.jpg" alt="Pixel Defense Team" class="project-img"><span
+                class="glass glass-chip">Teamwork</span></div>
             <p class="meta mt-3 mb-1">2025 – 2026</p>
             <h3 class="project-title sm">Pixel Defense – Team Presentation</h3>
-            <p class="mb-0">Presented Pixel Defense alongside teammates at PUP, demonstrating collaboration across design and development.</p>
+            <p class="mb-0">Presented Pixel Defense alongside teammates at PUP, demonstrating collaboration across
+              design and development.</p>
           </article>
         </div>
       </div>
@@ -570,4 +905,5 @@ body.dark-mode .site-footer { border-top: 3px solid var(--violet); }
   </script>
 
 </body>
+
 </html>
